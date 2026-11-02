@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#007f8f">
+  <title>Website Temporarily Unavailable | Badri Quantech</title>
+  <style>
+    :root {
+      --primary: #007f8f;
+      --primary-dark: #005d69;
+      --ink: #17343a;
+      --muted: #657b80;
+      --surface: #ffffff;
+      --page: #edf5f7;
+      --line: #dce9eb;
+    }
+
+    * { box-sizing: border-box; }
+    html { min-height: 100%; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      padding: 28px;
+      display: grid;
+      place-items: center;
+      color: var(--ink);
+      background:
+        radial-gradient(circle at 12% 12%, rgba(0,127,143,.12), transparent 32%),
+        radial-gradient(circle at 90% 88%, rgba(0,127,143,.10), transparent 30%),
+        var(--page);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    .page { width: min(100%, 1040px); }
+    .topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin: 0 0 22px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 11px;
+      color: var(--ink);
+      text-decoration: none;
+      font-weight: 750;
+      letter-spacing: -.03em;
+      font-size: 19px;
+    }
+    .brand-mark {
+      width: 39px;
+      height: 39px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      color: #fff;
+      background: #fff;
+      box-shadow: 0 7px 18px rgba(206, 219, 221, 0.2);
+      font-size: 17px;
+      font-weight: 800;
+    }
+
+    .brand-mark {
+    width: 39px;
+    height: 39px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    overflow: hidden;
+    background: transparent;
+}
+
+.brand-mark img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+    .status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 13px;
+      border: 1px solid #f0dfb6;
+      border-radius: 999px;
+      color: #8b641d;
+      background: #fff9eb;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .02em;
+    }
+    .status-dot {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: #d99b2b;
+      box-shadow: 0 0 0 4px rgba(217,155,43,.13);
+    }
+
+    .card {
+      position: relative;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      min-height: 530px;
+      border: 1px solid rgba(220,233,235,.9);
+      border-radius: 28px;
+      background: var(--surface);
+      box-shadow: 0 24px 70px rgba(23,52,58,.10);
+    }
+    .content {
+      position: relative;
+      z-index: 1;
+      padding: clamp(34px, 6vw, 72px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      width: fit-content;
+      margin-bottom: 22px;
+      color: var(--primary);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+    .eyebrow::before {
+      content: "";
+      width: 25px;
+      height: 2px;
+      border-radius: 2px;
+      background: var(--primary);
+    }
+    h1 {
+      max-width: 540px;
+      margin: 0;
+      color: #12343a;
+      font-size: clamp(36px, 5vw, 56px);
+      line-height: 1.06;
+      letter-spacing: -.055em;
+      font-weight: 780;
+    }
+    h1 span { color: var(--primary); }
+    .intro {
+      max-width: 490px;
+      margin: 22px 0 0;
+      color: var(--muted);
+      font-size: 16px;
+      line-height: 1.8;
+    }
+    .notice {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      max-width: 490px;
+      margin-top: 30px;
+      padding: 17px 18px;
+      border: 1px solid var(--line);
+      border-radius: 15px;
+      background: #f8fbfc;
+    }
+    .notice-icon {
+      flex: 0 0 34px;
+      width: 34px; height: 34px;
+      display: grid; place-items: center;
+      border-radius: 10px;
+      color: var(--primary);
+      background: #e2f2f4;
+    }
+    .notice strong {
+      display: block;
+      margin: 1px 0 5px;
+      font-size: 13px;
+    }
+    .notice p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.6;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 28px;
+    }
+    .button {
+      min-height: 48px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      padding: 0 19px;
+      border: 1px solid transparent;
+      border-radius: 12px;
+      color: white;
+      background: var(--primary);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 700;
+      transition: transform .2s ease, background .2s ease, box-shadow .2s ease;
+      box-shadow: 0 8px 18px rgba(0,127,143,.18);
+    }
+    .button:hover {
+      transform: translateY(-2px);
+      background: var(--primary-dark);
+      box-shadow: 0 12px 22px rgba(0,127,143,.22);
+    }
+    .button.secondary {
+      color: var(--ink);
+      background: white;
+      border-color: var(--line);
+      box-shadow: none;
+    }
+    .button.secondary:hover { background: #f7fbfc; }
+
+    .visual {
+      position: relative;
+      min-height: 430px;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      padding: 35px;
+      background: linear-gradient(145deg, #e8f5f6 0%, #d8eef0 52%, #c9e7ea 100%);
+    }
+    .orb {
+      position: absolute;
+      width: 370px; height: 370px;
+      border: 1px solid rgba(0,127,143,.13);
+      border-radius: 50%;
+    }
+    .orb::before, .orb::after {
+      content: "";
+      position: absolute;
+      border: 1px solid rgba(0,127,143,.13);
+      border-radius: 50%;
+    }
+    .orb::before { inset: 28px; }
+    .orb::after { inset: 58px; }
+    .illustration {
+      position: relative;
+      width: min(100%, 340px);
+      padding: 27px;
+      border: 1px solid rgba(255,255,255,.85);
+      border-radius: 23px;
+      background: rgba(255,255,255,.82);
+      box-shadow: 0 25px 55px rgba(18,78,85,.14);
+      backdrop-filter: blur(12px);
+      transform: rotate(-2deg);
+    }
+    .browser-bar {
+      display: flex;
+      gap: 6px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid #e7eff0;
+    }
+    .browser-bar i {
+      width: 7px; height: 7px; border-radius: 50%;
+      background: #c4d8db;
+    }
+    .browser-bar i:first-child { background: #e5a6a0; }
+    .browser-bar i:nth-child(2) { background: #e7c77d; }
+    .browser-bar i:nth-child(3) { background: #8dc9b1; }
+    .lock-wrap {
+      width: 104px; height: 104px;
+      display: grid; place-items: center;
+      margin: 28px auto 20px;
+      border-radius: 30px;
+      color: var(--primary);
+      background: #e5f4f5;
+    }
+    .lock-wrap svg { width: 55px; height: 55px; }
+    .screen-title {
+      margin: 0;
+      text-align: center;
+      color: #21454b;
+      font-size: 17px;
+      font-weight: 750;
+    }
+    .screen-subtitle {
+      margin: 8px 0 23px;
+      text-align: center;
+      color: #82979b;
+      font-size: 12px;
+    }
+    .progress {
+      height: 7px;
+      overflow: hidden;
+      border-radius: 10px;
+      background: #e8f0f1;
+    }
+    .progress span {
+      display: block;
+      width: 72%;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #007f8f, #65c1c9);
+    }
+    .progress-label {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 9px;
+      color: #8ba0a4;
+      font-size: 10px;
+    }
+    .floating-tag {
+      position: absolute;
+      right: 8%;
+      bottom: 16%;
+      padding: 12px 15px;
+      border: 1px solid rgba(255,255,255,.9);
+      border-radius: 13px;
+      color: #42666b;
+      background: rgba(255,255,255,.88);
+      box-shadow: 0 12px 28px rgba(18,78,85,.10);
+      font-size: 11px;
+      font-weight: 700;
+      transform: rotate(3deg);
+    }
+    .floating-tag span { color: var(--primary); }
+    footer {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 19px 4px 0;
+      color: #829499;
+      font-size: 11px;
+    }
+    footer a { color: var(--primary); text-decoration: none; font-weight: 700; }
+
+    @media (max-width: 760px) {
+      body { padding: 18px; }
+      .card { grid-template-columns: 1fr; }
+      .content { padding: 38px 28px; }
+      .visual { min-height: 370px; }
+      .orb { width: 310px; height: 310px; }
+      .illustration { max-width: 300px; }
+      .floating-tag { right: 7%; bottom: 10%; }
+      footer { flex-direction: column; text-align: center; }
+      .topbar { align-items: flex-start; }
+    }
+    @media (max-width: 420px) {
+      body { padding: 12px; }
+      .brand { font-size: 16px; }
+      .brand-mark { width: 34px; height: 34px; }
+      .status { padding: 8px 10px; font-size: 10px; }
+      .content { padding: 32px 22px; }
+      h1 { font-size: 39px; }
+      .intro { font-size: 14px; }
+      .actions { flex-direction: column; }
+      .button { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <header class="topbar">
+      <a class="brand" href="#" aria-label="Badri Quantech">
+       <span class="brand-mark">
+    <img src="logo.png" alt="Badri Quantech Logo">
+</span>
+        <span>Badri Quantech</span>
+      </a>
+      <div class="status"><span class="status-dot"></span> Website temporarily unavailable</div>
+    </header>
+
+    <section class="card" aria-labelledby="page-title">
+      <div class="content">
+        <div class="eyebrow">A quick update</div>
+        <h1 id="page-title">Your website is ready to <span>go live.</span></h1>
+        <p class="intro">
+          The website development work has been completed. To proceed with the
+          official launch and make the website publicly accessible, the pending
+          project payment must be cleared first.
+        </p>
+
+        <div class="notice">
+          <div class="notice-icon" aria-hidden="true">
+            <svg width="19" height="19" viewBox="0 0 24 24" fill="none">
+              <path d="M12 8v4m0 4h.01M10.3 3.9 2.8 17a2 2 0 0 0 1.7 3h15a2 2 0 0 0 1.7-3l-7.5-13.1a2 2 0 0 0-3.4 0Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div>
+            <strong>Payment required before launch</strong>
+            <p>Once the outstanding payment is received and confirmed, we will restore the website and complete the go-live process.</p>
+          </div>
+        </div>
+
+        <div class="actions">
+          <!-- Replace the email address below with your business email. -->
+          <a class="button" href="mailto:badridevelopersandsales@gmail.com?subject=Website%20Payment%20and%20Launch">
+            Contact us about payment
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+              <path d="M5 12h14m-6-6 6 6-6 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+          <a class="button secondary" href="mailto:YOUR_EMAIL@example.com">Get in touch</a>
+        </div>
+      </div>
+
+      <aside class="visual" aria-label="Website launch illustration">
+        <div class="orb"></div>
+        <div class="illustration">
+          <div class="browser-bar"><i></i><i></i><i></i></div>
+          <div class="lock-wrap">
+            <svg viewBox="0 0 64 64" fill="none" aria-hidden="true">
+              <rect x="12" y="27" width="40" height="29" rx="7" stroke="currentColor" stroke-width="3.2"/>
+              <path d="M21 27v-8a11 11 0 0 1 22 0v8" stroke="currentColor" stroke-width="3.2" stroke-linecap="round"/>
+              <circle cx="32" cy="40" r="3.5" fill="currentColor"/>
+              <path d="M32 43.5v5" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+            </svg>
+          </div>
+          <p class="screen-title">Almost ready for launch</p>
+          <p class="screen-subtitle">Final step: payment confirmation</p>
+          <div class="progress"><span></span></div>
+          <div class="progress-label"><span>Website completed</span><span>Launch pending</span></div>
+        </div>
+        <div class="floating-tag"><span>●</span> Ready for activation</div>
+      </aside>
+    </section>
+
+    <footer>
+      <span>© <span id="year"></span> Badri Quantech. All rights reserved.</span>
+      <span>We appreciate your understanding. <a href="mailto:badridevelopersandsales@gmail.com">Contact support</a></span>
+    </footer>
+  </main>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
